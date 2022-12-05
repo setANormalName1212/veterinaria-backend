@@ -7,3 +7,26 @@ POST http://localhost:5000/user
 PUT http://localhost:5000/user/4
 ###
 DELETE http://localhost:5000/user/4
+
+// LOGIN
+###
+POST http://localhost:5000/user/login
+Content-Type: application/json
+
+{
+    "email": "federicofigueroa011@gmail.com",
+    "password": "gatus2000"
+}
+
+// REGISTER
+###
+POST http://localhost:5000/user/register
+Content-Type: application/json
+
+{
+    "firstName": "federico",
+    "lastName": "figueroa",
+    "email": "federicofigueroa011@gmail.com",
+    "password": "gatus2000",
+    "password2": "gatus2000"
+}

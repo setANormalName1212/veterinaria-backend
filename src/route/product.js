@@ -8,4 +8,10 @@ router.get("/", product.getAll)
 
 router.get("/:id", product.get)
 
+router.post("/", product.add)
+
+router.put("/:id", product.update)
+
+router.delete("/:id", product.delete)
+
 export { router as product}

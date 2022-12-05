@@ -18,7 +18,7 @@ const userSchema = new Schema({
         default: false
     },
     cartID: {
-        type: ObjectId,
+        type: Schema.Types.ObjectId,
         required: true
     }
 })

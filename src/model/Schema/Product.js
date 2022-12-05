@@ -16,6 +16,13 @@ const productSchema = new Schema({
     stock: {
         type: Number,
         required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    subcategory: {
+        type: String
     }
 })
 

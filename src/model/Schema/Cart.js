@@ -1,12 +1,9 @@
 import { Schema, model } from "mongoose";
 
 const cartSchema = new Schema({
-    _id: {
-        type: ObjectId,
-        required: true
-    },
+    _id: Schema.Types.ObjectId,
     productIDs: {
-        type: [ObjectId],
+        type: [String],
         default: []
     },
     currentTotalPrice: {
