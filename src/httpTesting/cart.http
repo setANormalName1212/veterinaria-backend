@@ -1,0 +1,12 @@
+POST http://localhost:5000/cart/1
+Content-Type: application/json
+
+{
+    "title": "pedigree x 500gr",
+    "price": 50,
+    "qty": 10
+}
+
+###
+
+GET http://localhost:5000/cart/1

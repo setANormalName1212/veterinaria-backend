@@ -5,10 +5,18 @@ class CartDAO {
         await cartDB.findOne({ _id: id})
     }
 
-    async addProduct(id, product) {
-        await cartDB.updateOne({ _id: id }, { $push: { productIDs: {
+    async add(id, product) {
+        await cartDB.updateOne({ _id: id }, { $push: { products: {
             id: product.id,
+            title: product.title,
+            price: product.price,
             qty: product.qty
+        }}})
+    }
+
+    async takeOut(id, product) {
+        await cartDB.updateOne({ _id: id }, { $pull: { productIDs: {
+            id: product.id
         }}})
     }
 

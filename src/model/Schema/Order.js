@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 
 const productSchema = new Schema({
     _id: {
-        type: ObjectId,
+        type: Schema.Types.ObjectId,
         required: true
     },
     title: {

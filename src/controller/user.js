@@ -1,26 +1,40 @@
+import jsonwebtoken from "jsonwebtoken"
+import bcrypt from 'bcrypt'
+
 // DAO
 import userDAO from "../model/DAO/UserDAO.js"
 
 const user = {
+    // SEND a user by ID
     get: async (req, res) => {
         const { id } = req.params
         
         res.send(`${id}`)
     },
+
+    // SEND ALL users
     getAll: async (req, res) => {
         const users = await userDAO.get()
 
         res.json(users)
     },
+
+    // CREATE a user
     add: async (req, res) => {
         res.send("add")
     },
+
+    // UPDATE a user
     put: async (req, res) => {
         res.send("update")
     },
+
+    // DELETE a product by ID
     delete: async (req, res) => {
         res.send("delete")
     },
+
+    // LOGIN
     login: async (req, res) => {
         const { email, password } = req.body
         const errors = []
@@ -34,15 +48,30 @@ const user = {
         if(errors.length > 0) {
             res.json(errors)
         } else {
+            const user = await userDAO.getEmail(email)
 
-            /* IMPLEMENT DAO */
-            res.json({
-                msg: "Login success"
-            })
+            if(!user) {
+                res.json({
+                    ERROR_FIND: "User doesn't exist"
+                })
+            } else {
+                bcrypt.compare(password, user.password, (err, isMatch) => {
+                    if(isMatch) {
+                        const ACCESS_TOKEN = jsonwebtoken.sign(user.cartID, process.env.ACCESS_TOKEN)
+                        res.cookie("user", ACCESS_TOKEN)
+                        res.sendStatus(200).send('ok')
+                    }
+                })
+            }
         }
     },
+
+    // REGISTER
     register: async(req, res) => {
+        // recived inputs
         let { firstName, lastName, email, password, password2 } = req.body
+        
+        // Array of errors
         const errors = []
 
         // fill all inputs

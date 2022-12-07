@@ -16,6 +16,14 @@ class UserDAO {
         }
     }
 
+    async getEmail(email) {
+        try {
+            return await userDB.findOne({ email: email })
+        } catch(e) {
+            throw e
+        }
+    }
+
     async add({firstName, lastName, email, password}) {
         try {
             bcrypt.genSalt(10, function(err, salt) {
