@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import { connect } from "mongoose";
+import cookieParser from 'cookie-parser'
 // import route
 import { index } from "./route/index.js";
 import { user } from './route/user.js'
@@ -13,6 +14,7 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
 app.set('PORT', process.env.PORT || 3000)
 
 connect(process.env.MONGO_URI, () => {

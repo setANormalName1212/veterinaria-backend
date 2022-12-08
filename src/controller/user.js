@@ -19,11 +19,6 @@ const user = {
         res.json(users)
     },
 
-    // CREATE a user
-    add: async (req, res) => {
-        res.send("add")
-    },
-
     // UPDATE a user
     put: async (req, res) => {
         res.send("update")
@@ -57,11 +52,18 @@ const user = {
             } else {
                 bcrypt.compare(password, user.password, (err, isMatch) => {
                     if(isMatch) {
-                        const ACCESS_TOKEN = jsonwebtoken.sign(user.cartID, process.env.ACCESS_TOKEN)
+                        const ACCESS_TOKEN = jsonwebtoken.sign({
+                            userID: user._id,
+                            cartID: user.cartID
+                        }, process.env.ACCESS_TOKEN)
+
                         res.cookie("user", ACCESS_TOKEN)
-                        res.sendStatus(200).send('ok')
+                        res.json({
+                            success: "Loged"
+                        })
                     }
                 })
+
             }
         }
     },
@@ -99,6 +101,13 @@ const user = {
                 success: "register success"
             })
         }
+    },
+
+    logout: async (req, res) => {
+        res.clearCookie("user")
+        res.json({
+            success: "cookies deleted"
+        })
     }
 }
 

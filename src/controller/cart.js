@@ -3,52 +3,27 @@ import cartDAO from '../model/DAO/CartDAO.js'
 const cart = {
     // SEND an cart by ID
     get: async (req, res) => {
-        res.json(req.user)
-    },
-
-    // SEND all carts
-    getAll: (req, res) => {
-        res.json({
-            success: "An array of carts"
-        })
-    },
-
-    // ADD a product to a cart
-    add: (req, res) => {
-        const { title, price, qty } = req.body
-        const errors = []
-
-        // ERROR: An ID is needed
-        if(!id) {
-            errors.push({ id: "An ID is needed"})
-        }
-
-        // ERROR: Cart don't found
-        if(!id) {
-            errors.push({
-                find: "cart don't exist"
+        const cart = await cartDAO.get(req.user.cartID)
+        
+        if(!cart) {
+            res.json({
+                ERROR: "Cart dont exist"
             })
-        }
-
-        // ERROR: Fill all inputs
-        if(!title || !price || !qty) {
-            errors.push({ inputs: "Fill all inputs"})
-        }
-
-        // ERROR: Errors exist
-        if(errors.length > 0) {
-            res.json(errors)
         } else {
-            res.json()
+            res.json(cart)
         }
     },
 
-    // UPDATE an cart
-    update: (req, res) => {
+    // ADD a product to cart
+    add: (req, res) => {
+    },
+
+    // TAKE a product from cart
+    take: (req, res) => {
 
     },
 
-    // DELETE an cart
+    // DELETE a cart
     delete: (req, res) => {
         
     }

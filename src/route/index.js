@@ -4,7 +4,10 @@ const router = Router()
 // controller
 import index from '../controller/index.js'
 
-router.get("/", index)
+// auth
+import auth from '../controller/middlewares/auth.js'
+
+router.get("/", auth, index)
 
 export {
     router as index

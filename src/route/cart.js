@@ -7,14 +7,16 @@ import auth from '../controller/middlewares/auth.js'
 // controller
 import cart from '../controller/cart.js'
 
-router.get("/", cart.getAll)
+// Get one cart
+router.get("/", auth, cart.get)
 
-router.get("/:id", auth, cart.get)
+// Add product to cart
+router.put("/add/:id", auth, cart.add)
 
-router.post("/", cart.add)
+// Take product from cart
+router.delete("/take/:id", auth, cart.take)
 
-router.put("/", cart.update)
-
-router.delete("/", cart.delete)
+// delete cart
+router.delete("/", auth, cart.delete)
 
 export { router as cart}
