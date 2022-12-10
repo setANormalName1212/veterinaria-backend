@@ -1,4 +1,4 @@
-GET http://localhost:5000/product/5
+GET http://localhost:5000/product/6393fb7141afa7ad94401136
 ###
 GET http://localhost:5000/product
 
@@ -9,24 +9,26 @@ Content-Type: application/json
 {
     "title": "alimento x500gr pedigree",
     "price": 100,
-    "description": "comida para piyitus",
+    "description": "comida para perros",
     "stock": 25,
-    "category": "alimento",
-    "subcategory": "perros"
+    "category": "alimento"
 }
 
 ###
-PUT http://localhost:5000/product/2
+PUT http://localhost:5000/product/6393f3f869e0132fa43f828e
 Content-Type: application/json
 
 {
     "title": "alimento x500gr pedigree",
     "price": 150,
-    "description": "comida para piyitus",
+    "description": "comida para perros",
     "stock": 35,
-    "category": "alimento",
-    "subcategory": "perros"
+    "category": "alimentos",
+    "subcategory": "perro"
 }
 
 ###
-DELETE http://localhost:5000/product/2
+DELETE http://localhost:5000/product/6393f89d1ee8c9cbf4c40020
+
+###
+DELETE http://localhost:5000/product/

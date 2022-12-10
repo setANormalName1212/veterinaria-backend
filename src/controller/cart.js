@@ -1,4 +1,5 @@
 import cartDAO from '../model/DAO/CartDAO.js'
+import productDAO from '../model/DAO/ProductDAO.js'
 
 const cart = {
     // SEND an cart by ID
@@ -15,7 +16,20 @@ const cart = {
     },
 
     // ADD a product to cart
-    add: (req, res) => {
+    add: async (req, res) => {
+        const { id } = req.params
+        const { cartID } = req.user
+
+        const product = await productDAO.get(id)
+        const cart = await cartDAO.get(cartID)
+
+        if(!cart) {
+            res.json({
+                ERROR: "Cart no exist"
+            })
+        } else {
+            res.json(cart)
+        }
     },
 
     // TAKE a product from cart

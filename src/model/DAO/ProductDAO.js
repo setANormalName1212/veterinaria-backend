@@ -2,7 +2,11 @@ import productDB from '../Schema/Product.js'
 
 class ProductDAO {
     async get(id) {
-        return await productDB.findOne({ _id: id})
+        const product = await productDB.findOne({ _id: id})
+
+        if(!product) return undefined;
+
+        return product
     }
 
     async getAll() {
@@ -17,9 +21,21 @@ class ProductDAO {
         return;
     }
 
+    async update(id, product) {
+        await productDB.updateOne({ _id: id }, product)
+
+        return;
+    }
+
     async delete(id) {
         await productDB.deleteOne({ _id: id })
         
+        return;
+    }
+
+    async deleteAll() {
+        await productDB.remove()
+
         return;
     }
 }

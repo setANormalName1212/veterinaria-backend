@@ -24,6 +24,8 @@ const product = {
     // SEND ALL products
     getAll: async (req, res) => {
         const products = await productDAO.getAll()
+
+        res.json(products)
     },
 
     // CREATE a product
@@ -39,36 +41,52 @@ const product = {
         if(errors.length > 0) {
             res.json(errors)
         } else {
-            await product.add(req.body)
+            await productDAO.add(req.body)
 
-            res.json({
-                msg: "Product added"
-            })
+            res.json()
         }
     },
 
     // UPDATE or PATCH a product
-    update: (req, res) => {
+    update: async (req, res) => {
         const { id } = req.params
 
-        console.log(req.body)
-        console.log(id)
-        
-        res.json({
-            _id: id,
-            ...req.body
-        })
+        const product = await productDAO.get(id)
+
+        if(!product) {
+            res.json({
+                ERROR: "Product not found"
+            })
+        } else {
+            await productDAO.update(id, req.body)
+
+            res.json(product)
+        }
     },
 
     // DELETE a product by ID
-    delete: (req, res) => {
+    delete: async (req, res) => {
         const { id } = req.params
-        console.log(req.params)
+        
+        const product = await productDAO.get(id)
 
-        res.json({
-            msg: "Deleted",
-            product: id
-        })
+        if(!product) {
+            res.json({
+                ERROR: "Product not found"
+            })
+        } else {
+            await productDAO.delete(id)
+
+            res.json()
+        }
+
+        
+    },
+
+    deleteAll: async (req, res) => {
+        await productDAO.deleteAll()
+
+        res.json()
     }
 }
 

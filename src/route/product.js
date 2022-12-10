@@ -14,4 +14,6 @@ router.put("/:id", product.update)
 
 router.delete("/:id", product.delete)
 
+router.delete("/", product.deleteAll)
+
 export { router as product}
