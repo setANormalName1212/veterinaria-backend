@@ -12,8 +12,8 @@ POST http://localhost:5000/user/login
 Content-Type: application/json
 
 {
-    "email": "federicofigueroa011@gmail.com",
-    "password": "gatus2000"
+    "email": "florOjeda@gmail.com",
+    "password": "jongin88"
 }
 
 // REGISTER
@@ -22,11 +22,11 @@ POST http://localhost:5000/user/register
 Content-Type: application/json
 
 {
-    "firstName": "federico",
-    "lastName": "figueroa",
-    "email": "federicofigueroa011@gmail.com",
-    "password": "gatus2000",
-    "password2": "gatus2000"
+    "firstName": "Florencia",
+    "lastName": "Ojeda",
+    "email": "florOjeda@gmail.com",
+    "password": "jongin88",
+    "password2": "jongin88"
 }
 
 // LOG OUT

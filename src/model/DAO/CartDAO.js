@@ -2,11 +2,15 @@ import cartDB from '../Schema/Cart.js'
 
 class CartDAO {
     async get(id) {
-        await cartDB.findOne({ _id: id})
+        return await cartDB.findById(id)
+    }
+
+    async getAll() {
+        return await cartDB.find()
     }
 
     async add(id, product) {
-        await cartDB.updateOne({ _id: id }, { $push: { products: {
+        await cartDB.updateOne({ _id: id }, { $push: { productIDs: {
             id: product.id,
             title: product.title,
             price: product.price,
@@ -14,9 +18,9 @@ class CartDAO {
         }}})
     }
 
-    async takeOut(id, product) {
+    async take(id, product) {
         await cartDB.updateOne({ _id: id }, { $pull: { productIDs: {
-            id: product.id
+            title: product
         }}})
     }
 

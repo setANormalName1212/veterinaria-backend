@@ -1,3 +1,14 @@
-PUT http://localhost:5000/cart/add/6393fb7141afa7ad94401136
+
+// ADD PRODUCT TO CART
+PUT http://localhost:5000/cart/add/6393fb8541afa7ad9440113b
+
+###
+// TAKE PRODUCT BY ID FROM CART
+PUT http://localhost:5000/cart/take/6393fb8541afa7ad9440113b
+
 ###
 GET http://localhost:5000/cart
+
+###
+// GET ALL CARTS
+GET http://localhost:5000/cart/test/getAll

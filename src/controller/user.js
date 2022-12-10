@@ -5,14 +5,14 @@ import bcrypt from 'bcrypt'
 import userDAO from "../model/DAO/UserDAO.js"
 
 const user = {
-    // SEND a user by ID
+    // GET a user by ID
     get: async (req, res) => {
         const { id } = req.params
         
         res.send(`${id}`)
     },
 
-    // SEND ALL users
+    // GET ALL users
     getAll: async (req, res) => {
         const users = await userDAO.get()
 
@@ -22,11 +22,6 @@ const user = {
     // UPDATE a user
     put: async (req, res) => {
         res.send("update")
-    },
-
-    // DELETE a product by ID
-    delete: async (req, res) => {
-        res.send("delete")
     },
 
     // LOGIN
@@ -103,10 +98,22 @@ const user = {
         }
     },
 
+    // LOG OUT from account
     logout: async (req, res) => {
         res.clearCookie("user")
         res.json({
             success: "cookies deleted"
+        })
+    },
+
+    // DELETE user
+    deleteAcc: async (req, res) => {
+        res.clearCookie("user")
+        
+        // TODO: delete account
+
+        res.json({
+            success: "User deleted"
         })
     }
 }

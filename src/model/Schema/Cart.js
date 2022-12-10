@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 const cartSchema = new Schema({
     _id: Schema.Types.ObjectId,
     productIDs: {
-        type: [String],
+        type: [],
         default: []
     },
     currentTotalPrice: {

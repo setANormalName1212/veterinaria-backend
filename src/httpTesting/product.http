@@ -1,8 +1,13 @@
+// GET ONE PRODUCT BY ID (PARAMETER)
 GET http://localhost:5000/product/6393fb7141afa7ad94401136
 ###
+
+// GET ALL PRODUCTS
 GET http://localhost:5000/product
 
 ###
+
+// CREATE A PRODUCT
 POST http://localhost:5000/product/
 Content-Type: application/json
 
@@ -15,6 +20,8 @@ Content-Type: application/json
 }
 
 ###
+
+// UPDATE A PRODUCT
 PUT http://localhost:5000/product/6393f3f869e0132fa43f828e
 Content-Type: application/json
 
@@ -28,7 +35,11 @@ Content-Type: application/json
 }
 
 ###
+
+// DELETE A PRODUCT BY ID (PARAMETER)
 DELETE http://localhost:5000/product/6393f89d1ee8c9cbf4c40020
 
 ###
+
+// DELETE ALL PRODUCTS
 DELETE http://localhost:5000/product/
