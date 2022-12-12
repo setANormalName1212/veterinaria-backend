@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import { connect } from "mongoose";
 import cookieParser from 'cookie-parser'
 // import route
-import { index } from "./route/index.js";
 import { user } from './route/user.js'
 import { product } from './route/product.js'
 import { cart } from './route/cart.js'
@@ -22,7 +21,6 @@ connect(process.env.MONGO_URI, () => {
 })
 
 // route
-app.use("/", index)
 app.use("/user", user)
 app.use("/product", product)
 app.use("/cart", cart)

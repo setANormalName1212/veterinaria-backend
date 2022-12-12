@@ -1,27 +1,8 @@
 import { Schema, model } from "mongoose";
 
-const productSchema = new Schema({
-    _id: {
-        type: Schema.Types.ObjectId,
-        required: true
-    },
-    title: {
-        type: String,
-        required: true
-    },
-    price: {
-        type: Number,
-        required: true
-    },
-    quantity: {
-        type: Number,
-        required: true
-    }
-})
-
 const orderSchema = new Schema({
     products: {
-        type: [productSchema],
+        type: Array,
         default: []
     },
     totalPrice: {

@@ -1,5 +1,5 @@
 // GET ONE PRODUCT BY ID (PARAMETER)
-GET http://localhost:5000/product/6393fb7141afa7ad94401136
+GET http://localhost:5000/product/6393fb7141afa7ad95401136
 ###
 
 // GET ALL PRODUCTS

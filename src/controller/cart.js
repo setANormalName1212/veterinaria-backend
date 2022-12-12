@@ -25,21 +25,27 @@ const cart = {
     add: async (req, res) => {
         const { id } = req.params
         const { cartID } = req.user
+        const { qty } = req.body
 
         const product = await productDAO.get(id)
         const cart = await cartDAO.get(cartID)
 
         // Product to add NO exist
-        if(!product) res.json({ ERROR: "Product dont exist"});
+        if (!product) {
+            res.json({ ERROR: "Product dont exist" })
+        } else {
 
-        // Cart NO exist
-        if(!cart) res.json({ ERROR: "Crt dont exist" });
+            // Cart NO exist
+            if (!cart) {
+                res.json({ ERROR: "Cart dont exist" })
+            } else {
 
-        // Product already added to cart
+                // Product already added to cart
+                await cartDAO.add(cartID, product, qty)
 
-        await cartDAO.add(cartID, product)
-
-        res.json()
+                res.json()
+            }
+        }
     },
 
     // TAKE a product from cart
@@ -62,6 +68,16 @@ const cart = {
         await cartDAO.take(cartID, id)
 
         res.json()
+    },
+
+    buy: async (req, res) => {
+        const { cartID } = req.user
+
+        await cartDAO.buy(cartID)
+
+        const cart = await cartDAO.get(cartID)
+
+        res.json(cart)
     },
 
     // DELETE a cart

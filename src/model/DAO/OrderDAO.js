@@ -1,24 +1,16 @@
 import orderDB from '../Schema/Order.js'
 
 class OrderDAO {
-    async getById(id) {
-
+    async get(orderNum) {
+        return await orderDB.findOne({ orderNum: orderNum })
     }
 
     async getAll() {
-
+        return await orderDB.find()
     }
-
-    async add(data) {
-
-    }
-
-    async update(data) {
-        
-    }
-
-    async delete(id) {
-
+    
+    async deleteAll() {
+        await orderDB.deleteMany()
     }
 }
 

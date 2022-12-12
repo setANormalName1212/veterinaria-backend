@@ -1,14 +1,24 @@
 
 // ADD PRODUCT TO CART
-PUT http://localhost:5000/cart/add/6393fb8541afa7ad9440113b
+PUT http://localhost:5000/cart/add/6393fb7141afa7ad94401136
+Content-Type: application/json
+
+{
+    "qty": 8
+}
 
 ###
 // TAKE PRODUCT BY ID FROM CART
 PUT http://localhost:5000/cart/take/6393fb8541afa7ad9440113b
 
 ###
+//GET CART
 GET http://localhost:5000/cart
 
 ###
 // GET ALL CARTS
 GET http://localhost:5000/cart/test/getAll
+
+###
+// BUY PRODUCTS FROM CART
+PUT http://localhost:5000/cart/buy

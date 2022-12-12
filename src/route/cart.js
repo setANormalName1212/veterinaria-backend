@@ -19,6 +19,9 @@ router.put("/add/:id", auth, cart.add)
 // Take product from cart
 router.put("/take/:id", auth, cart.take)
 
+// Buy products from cart
+router.put("/buy", auth, cart.buy)
+
 // delete cart
 router.delete("/", auth, cart.delete)
 

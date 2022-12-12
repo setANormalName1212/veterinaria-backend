@@ -7,27 +7,30 @@ const order = {
 
     // SEND order
     get: async (req, res) => {
+        const { orderNumber } = req.params
 
+        const order = await orderDAO.get(orderNumber)
+
+        if(!order) {
+            res.json({
+                ERROR: "order not found"
+            })
+        } else {
+            res.json(order)
+        }
     },
 
     // SEND ALL orders
     getAll: async (req, res) => {
+        const orders = await orderDAO.getAll()
 
+        res.json(orders)
     },
 
-    // CREATE a order
-    add: async (req, res) => {
+    deleteAll: async (req, res) => {
+        await orderDAO.deleteAll()
 
-    },
-
-    // UPDATE a order
-    update: async (req, res) => {
-
-    },
-
-    // DELETE a order
-    delete: async (req, res) => {
-
+        res.json()
     }
 }
 

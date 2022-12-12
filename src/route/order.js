@@ -4,6 +4,8 @@ const router = Router()
 // controller
 import order from '../controller/order.js'
 
-router.get("/", order.index)
+router.get("/", order.getAll)
+
+router.get("/:orderNumber", order.get)
 
 export { router as order}

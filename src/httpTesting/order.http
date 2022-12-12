@@ -1,0 +1,14 @@
+// GET ALL ORDERS
+GET http://localhost:5000/order/
+
+###
+// GET ONE ORDER BY ORDER NUMBER
+GET http://localhost:5000/order/4
+
+###
+// DELETE ONE ORDER BY ORDER NUMBER
+DELETE  http://localhost:5000/order/4
+
+###
+// DELETE ALL ORDERS
+GET http://localhost:5000/order/
