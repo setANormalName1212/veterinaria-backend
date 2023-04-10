@@ -2,6 +2,10 @@
 GET http://localhost:5000/product/6393fb7141afa7ad95401136
 ###
 
+GET http://localhost:5000/product/6393fb8541afa7ad9440113b HTTP/1.1
+
+###
+
 // GET ALL PRODUCTS
 GET http://localhost:5000/product
 

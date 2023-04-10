@@ -4,8 +4,6 @@ class ProductDAO {
     async get(id) {
         const product = await productDB.findOne({ _id: id})
 
-        if(!product) return undefined;
-
         return product
     }
 
